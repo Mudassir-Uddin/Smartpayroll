@@ -25,6 +25,7 @@
     {{-- Sweet Alert --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css">
 
+    
   </head>
   <body>
     <div class="container-scroller">
@@ -110,6 +111,23 @@
               </ul>
             </div>
           </li>
+          
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#department" aria-expanded="false" aria-controls="department">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Departments</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="department">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/Departments">All Departments</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/DepartmentsInsert">Departments Insert</a></li>
+              </ul>
+            </div>
+          </li>
+
           <li class="nav-item menu-items">
             <a class="nav-link" href="pages/forms/basic_elements.html">
               <span class="menu-icon">

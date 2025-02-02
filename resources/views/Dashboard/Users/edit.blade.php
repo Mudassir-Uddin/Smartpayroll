@@ -3,11 +3,11 @@
    <!-- partial -->
    <div class="content-wrapper">
     <div class="page-header">
-      <h3 class="page-title"> Form elements </h3>
+      <h3 class="page-title"> User Form  </h3>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Forms</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+          <li class="breadcrumb-item active" aria-current="page"> User Form </li>
         </ol>
       </nav>
     </div>
@@ -15,8 +15,8 @@
       <div class="col-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Basic form elements</h4>
-            <p class="card-description"> Basic form elements </p>
+            <h4 class="card-title">User form </h4>
+            <p class="card-description"> User form  </p>
   
             <form action="{{ url('/Usersupdate') }}/{{ $user->id }}" method="POST"
                                 enctype="multipart/form-data">
@@ -55,7 +55,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail3">email</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail3" value="{{ $user->email }}"
+                                    <input type="email" class="form-control" id="exampleInputEmail3" value="{{ $user->email }}"
                                         name="email" placeholder="Email">
                                     @error('email')
                                         <p class="text-danger">{{ $message }}</p>
