@@ -19,7 +19,7 @@
                         <p class="card-description"> Add Transactiontypes :-  <code><a href="/TransactiontypesInsert">Transactiontypes-Insert</a></code>
                         </p>
                         <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table id="employeeTable" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th> Sn </th>

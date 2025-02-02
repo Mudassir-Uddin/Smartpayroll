@@ -19,7 +19,7 @@
                         <p class="card-description"> Add Department :-  <code><a href="/DepartmentsInsert">Departments-Insert</a></code>
                         </p>
                         <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table id="employeeTable" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th> Sn </th>

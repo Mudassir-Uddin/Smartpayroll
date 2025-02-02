@@ -24,6 +24,8 @@
     
     {{-- Sweet Alert --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css">
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
     
   </head>
@@ -141,6 +143,23 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="/Transactiontypes"> All Transactiontype</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/TransactiontypesInsert"> Transactiontype Insert </a></li>
+              </ul>
+            </div>
+          </li>
+
+          
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#Employee" aria-expanded="false" aria-controls="Employee">
+              <span class="menu-icon">
+                <i class="mdi mdi-security"></i>
+              </span>
+              <span class="menu-title">Employees</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Employee">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/Employees"> All Employees</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/EmployeesInsert"> Employee Insert </a></li>
               </ul>
             </div>
           </li>
@@ -425,5 +444,22 @@
     <!-- End custom js for this page -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
 
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<script>
+  
+  $(document).ready(function() {
+        $('#employeeTable').DataTable({
+            "paging": true,        // Enable pagination
+            "searching": true,     // Enable search
+            "ordering": true,      // Enable sorting
+            "info": true           // Show info text
+        });
+    });
+</script>
   </body>
 </html>

@@ -2,39 +2,39 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
-class Users extends Model
-{ //
+class Employee extends Model
+{
+    //
     protected static function boot()
     {
         parent::boot();
 
         // Hook into the creating and updating events
-        static::creating(function ($user) {
-            self::validateEmail($user);
+        static::creating(function ($Employee) {
+            self::validateEmail($Employee);
         });
 
-        static::updating(function ($user) {
-            self::validateEmail($user);
+        static::updating(function ($Employee) {
+            self::validateEmail($Employee);
         });
     }
 
     /**
      * Validate the uniqueness of the email.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $Employee
      * @throws \Illuminate\Validation\ValidationException
      */
-    protected static function validateEmail($user)
+    protected static function validateEmail($Employee)
     {
         $validator = Validator::make(
-            ['email' => $user->email],
-            ['email' => 'required|email|unique:employees,email,' . $user->id]
+            ['email' => $Employee->email],
+            ['email' => 'required|email|unique:Employees,email,' . $Employee->id]
         );
 
         if ($validator->fails()) {
@@ -42,12 +42,12 @@ class Users extends Model
         }
     }
     use HasFactory;
+    protected $table = 'employees';
+    protected $primaryKey = 'id';
     
-    protected $table = 'user';
-    protected $primaryKey = "id";
+    public function Department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
+    }
     
-    // Define default attributes
-    protected $attributes = [
-        'status' => 1, // Default value for 'status'
-    ];
 }

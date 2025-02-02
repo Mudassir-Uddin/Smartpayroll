@@ -3,11 +3,11 @@
     <!-- partial -->
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> User Tables </h3>
+            <h3 class="page-title"> Employee Tables </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">User tables</li>
+                    <li class="breadcrumb-item active" aria-current="page">Employee tables</li>
                 </ol>
             </nav>
         </div>
@@ -15,18 +15,24 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">User table</h4>
-                        <p class="card-description"> Add User :-  <code><a href="/UsersInsert">Users-Insert</a></code>
+                        <h4 class="card-title">Employee table</h4>
+                        <p class="card-description"> Add Employee :-  <code><a href="/EmployeesInsert">Employees-Insert</a></code>
                         </p>
                         <div class="table-responsive">
                             <table id="employeeTable" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th> Sn </th>
+                                        <th> Employee Id </th>
                                         <th> Name </th>
                                         <th> Image </th>
                                         <th> Email </th>
-                                        <th> Role </th>
+                                        <th> Phone </th>
+                                        <th> Address </th>
+                                        <th> Designation </th>
+                                        <th> Department </th>
+                                        <th> Basic Salary </th>
+                                        <th> Joining Date </th>
                                         <th> Status </th>
                                         <th> Date </th>
                                         <th> Action </th>
@@ -36,26 +42,34 @@
                                     @php
                                         $i = 0;
                                     @endphp
-                                    @foreach ($Users as $ct)
+                                    @foreach ($Employee as $Ep)
                                         <tr>
                                             <th scope="row">{{ ++$i }}</th>
-                                            <td>{{ $ct->name }}</td>
-
-                                            <td><a href="{{ $ct->img }}" data-lightbox="roadtrip" class="data"><img
-                                                        src="{{ $ct->img }}" width="80px" height="50px"
-                                                        class="circle" alt=""></a></td>
-
-                                            <td>{{ $ct->email }}</td>
-                                            <td>{{ $ct->role == 2 ? 'user' : ($ct->role == 1 ? 'Admin' : 'Manager') }}</td>
-                                            <td>{{ $ct->status == 1 ? 'Active' : 'Unactive' }}</td>
-                                            <td>{{ $ct->updated_at = date('Y-m-d') }}</td>
-                                            {{-- @if (session()->get('role') == 3) --}}
-
-                                            {{-- @elseif (session()->get('role') == 1) --}}
+                                            <td>{{ $Ep->employee_id }}</td>
+                                            <td>{{ $Ep->name }}</td>
+                                            <td><img src="{{$Ep->img}}" alt=""></td>
+                                            <td>{{ $Ep->email }}</td>
+                                            <td>{{ $Ep->phone }}</td>
+                                            <td>{{ $Ep->address }}</td>
+                                            <td>{{ $Ep->designation }}</td>
+                                            <td>{{ $Ep->Department->name }}</td>
+                                            <td>{{ $Ep->basic_salary }}</td>
+                                            <td>{{ $Ep->joining_date }}</td>
+                                            <td>
+                                                @if ($Ep->status == 1)
+                                                    <option value="1">Active</option>
+                                                @elseif ($Ep->status == 2)
+                                                    <option value="2">Unactive</option>
+                                                    {{-- @endforeach --}}
+                                                @else
+                                                    <option value="3">Terminated</option>
+                                                @endif
+                                            </td>
+                                            <td>{{ $Ep->updated_at = date('Y-m-d') }}</td>
                                             <td>
                                                 <button class="btn btn-warning "><a class="text-white"
-                                                        href="{{ url('/Usersedit') }}/{{ $ct->id * 548548 }}">Edit</a></button>
-                                                <button onclick="myfun({{ $ct->id }})"
+                                                        href="{{ url('/Employeesedit') }}/{{ $Ep->id * 548548 }}">Edit</a></button>
+                                                <button onclick="myfun({{ $Ep->id }})"
                                                     class="btn btn-danger">Delete</button>
                                             </td>
                                         </tr>
@@ -88,7 +102,7 @@
                       'success'
 
                   )
-                  window.location.href = "{{ url('/Usersdelete') }}/" + id
+                  window.location.href = "{{ url('/Employeesdelete') }}/" + id
               }
           })
           // if (ans) {
@@ -97,8 +111,9 @@
           // }
       }
   </script>
+
   <style>
-    .swal2-title {
+.swal2-title {
     color: black !important;  /* Force black color */
 }
 </style>
