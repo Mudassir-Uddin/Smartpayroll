@@ -1,9 +1,5 @@
 @extends('layout.dashboard')
 @section('mydashboard')
-
-
-    
-      
      
           <div class="content-wrapper">
             <div class="row">
