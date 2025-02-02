@@ -4,11 +4,11 @@
   <!-- partial -->
     <div class="content-wrapper">
       <div class="page-header">
-        <h3 class="page-title"> User Form </h3>
+        <h3 class="page-title"> User Insert </h3>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Forms</a></li>
-            <li class="breadcrumb-item active" aria-current="page">User Form</li>
+            <li class="breadcrumb-item"><a href="#">Inserts</a></li>
+            <li class="breadcrumb-item active" aria-current="page">User Insert</li>
           </ol>
         </nav>
       </div>
@@ -16,8 +16,8 @@
         <div class="col-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title"> User Form</h4>
-              <p class="card-description">User Form </p>
+              <h4 class="card-title"> User Insert</h4>
+              <p class="card-description">User Insert </p>
               <form class="forms-sample" action="{{url('/UsersStore')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">

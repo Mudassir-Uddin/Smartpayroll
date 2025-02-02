@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentsController;
+use App\Http\Controllers\Transaction_TypeController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,10 @@ Route::post('/DepartmentsStore', [DepartmentsController::class, 'Store']);
 Route::get('/Departmentsedit/{id}', [DepartmentsController::class, 'edit']);
 Route::post('/Departmentsupdate/{id}', [DepartmentsController::class, 'update']);
 Route::get('/Departmentsdelete/{id}', [DepartmentsController::class, 'delete']);
+
+Route::get('/Transactiontypes', [Transaction_TypeController::class, 'index'])->name('Transactiontype');
+Route::get('/TransactiontypesInsert', [Transaction_TypeController::class, 'insert'])->name('TransactiontypeInsert');
+Route::post('/TransactiontypesStore', [Transaction_TypeController::class, 'Store']);
+Route::get('/Transactiontypesedit/{id}', [Transaction_TypeController::class, 'edit']);
+Route::post('/Transactiontypesupdate/{id}', [Transaction_TypeController::class, 'update']);
+Route::get('/Transactiontypesdelete/{id}', [Transaction_TypeController::class, 'delete']);

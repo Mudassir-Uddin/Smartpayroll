@@ -3,11 +3,11 @@
    <!-- partial -->
    <div class="content-wrapper">
     <div class="page-header">
-      <h3 class="page-title"> Department Edit  </h3>
+      <h3 class="page-title"> Transactiontype Edit  </h3>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Edits</a></li>
-          <li class="breadcrumb-item active" aria-current="page"> Department Edit </li>
+          <li class="breadcrumb-item active" aria-current="page"> Transactiontype Edit </li>
         </ol>
       </nav>
     </div>
@@ -15,27 +15,27 @@
       <div class="col-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Department Edit </h4>
-            <p class="card-description"> Department Edit  </p>
+            <h4 class="card-title">Transactiontype Edit </h4>
+            <p class="card-description"> Transactiontype Edit  </p>
   
-            <form action="{{ url('/Departmentsupdate') }}/{{ $department->id }}" method="POST"
+            <form action="{{ url('/Transactiontypesupdate') }}/{{ $transactiontype->id }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group">
-                                    <label for="exampleInputName1">Department Name</label>
-                                    <input type="text" class="form-control" id="exampleInputName1" value="{{ $department->name }}"
-                                        name="name" placeholder="Department Name">
-                                    @error('name')
+                                    <label for="exampleInputName1">Category</label>
+                                    <input type="text" class="form-control" id="exampleInputName1" value="{{ $transactiontype->category }}"
+                                        name="category" placeholder="Category">
+                                    @error('category')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail3">Description</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail3" value="{{ $department->description }}"
-                                        name="description" placeholder="Description">
-                                    @error('description')
+                                    <label for="exampleInputEmail3">Type</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail3" value="{{ $transactiontype->type }}"
+                                        name="type" placeholder="Type">
+                                    @error('type')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
