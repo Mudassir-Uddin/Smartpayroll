@@ -132,6 +132,22 @@
 
           
           <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#Employee" aria-expanded="false" aria-controls="Employee">
+              <span class="menu-icon">
+                <i class="mdi mdi-contacts"></i>
+              </span>
+              <span class="menu-title">Designations</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Employee">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/Designations"> All Designations</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/DesignationsInsert"> Designations Insert </a></li>
+              </ul>
+            </div>
+          </li>
+          
+          <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
                 <i class="mdi mdi-security"></i>

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentsController;
+use App\Http\Controllers\DesignationController;
+use App\Http\Controllers\DesignationsController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\Transaction_TypeController;
 use App\Http\Controllers\UsersController;
@@ -43,3 +45,10 @@ Route::post('/EmployeesStore', [EmployeesController::class, 'Store']);
 Route::get('/Employeesedit/{id}', [EmployeesController::class, 'edit']);
 Route::post('/Employeesupdate/{id}', [EmployeesController::class, 'update']);
 Route::get('/Employeesdelete/{id}', [EmployeesController::class, 'delete']);
+
+Route::get('/Designations', [DesignationController::class, 'index'])->name('Designation');
+Route::get('/DesignationsInsert', [DesignationController::class, 'insert'])->name('DesignationInsert');
+Route::post('/DesignationsStore', [DesignationController::class, 'Store']);
+Route::get('/Designationsedit/{id}', [DesignationController::class, 'edit']);
+Route::post('/Designationsupdate/{id}', [DesignationController::class, 'update']);
+Route::get('/Designationsdelete/{id}', [DesignationController::class, 'delete']);
