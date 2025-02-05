@@ -77,10 +77,14 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputName1">Designation</label>
-                                <input type="text" name="designation" class="form-control" id="exampleInputName1"
-                                    placeholder="Designation" value="{{ old('designation') }}">
-                                @error('designation')
+                                <label>Select designation_id:</label>
+                                <select class="js-example-basic-single" name="designation" style="width:100%">
+                                  <option value="" disabled>Select designation_id</option>
+                                  @foreach ($designation_Id as $designation_id)
+                                        <option value="{{ $designation_id->id }}">{{ $designation_id->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('designation_id')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>

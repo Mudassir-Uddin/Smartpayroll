@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\Designation;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,9 @@ class EmployeesController extends Controller
     }
     public function Insert(){
 
+        $designation_Id = Designation::all();
         $department_Id = Department::all();
-        return view('Dashboard.Employees.insert',compact('department_Id'));
+        return view('Dashboard.Employees.insert',compact('department_Id','designation_Id'));
     }
     public function Store(Request $req){
         $req->validate([
