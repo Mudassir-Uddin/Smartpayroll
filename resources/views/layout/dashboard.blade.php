@@ -198,6 +198,22 @@
           </li>
 
           <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#Bonuses" aria-expanded="false" aria-controls="Bonuses">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Bonuses</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Bonuses">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/Bonuses">All Bonuses</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/BonusesInsert">Bonuses Insert</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item menu-items">
             <a class="nav-link" href="pages/forms/basic_elements.html">
               <span class="menu-icon">
                 <i class="mdi mdi-playlist-play"></i>

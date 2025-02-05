@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendancesController;
+use App\Http\Controllers\BonusesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\DesignationController;
@@ -60,3 +61,10 @@ Route::post('/AttendancesStore', [AttendancesController::class, 'Store']);
 Route::get('/Attendancesedit/{id}', [AttendancesController::class, 'edit']);
 Route::post('/Attendancesupdate/{id}', [AttendancesController::class, 'update']);
 Route::get('/Attendancesdelete/{id}', [AttendancesController::class, 'delete']);
+
+Route::get('/Bonuses', [BonusesController::class, 'index'])->name('Bonuse');
+Route::get('/BonusesInsert', [BonusesController::class, 'insert'])->name('BonuseInsert');
+Route::post('/BonusesStore', [BonusesController::class, 'Store']);
+Route::get('/Bonusesedit/{id}', [BonusesController::class, 'edit']);
+Route::post('/Bonusesupdate/{id}', [BonusesController::class, 'update']);
+Route::get('/Bonusesdelete/{id}', [BonusesController::class, 'delete']);
