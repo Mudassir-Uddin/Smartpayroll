@@ -119,7 +119,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail3">Basic Salary</label>
                                 <input type="number" name="basic_salary" class="form-control" id="exampleInputEmail3"
-                                    placeholder="Basic Salary" value="{{ old('basic_salary') }}">
+                                    placeholder="Basic Salary" value="{{ old('basic_salary') }}" min="0">
                                 @error('basic_salary')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror

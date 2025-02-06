@@ -115,7 +115,7 @@
                                 <label for="exampleInputEmail3">Basic Salary</label>
                                 <input type="number" class="form-control" id="exampleInputEmail3"
                                     value="{{ $Employee->basic_salary }}" name="basic_salary"
-                                    placeholder="Basic Salary">
+                                    placeholder="Basic Salary" min="0">
                                 @error('basic_salary')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror

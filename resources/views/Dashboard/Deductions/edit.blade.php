@@ -3,11 +3,11 @@
     <!-- partial -->
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Bonuse Edit </h3>
+            <h3 class="page-title"> Deduction Edit </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Edits</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"> Bonuse Edit </li>
+                    <li class="breadcrumb-item active" aria-current="page"> Deduction Edit </li>
                 </ol>
             </nav>
         </div>
@@ -15,10 +15,10 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Bonuse Edit </h4>
-                        <p class="card-description"> Bonuse Edit </p>
+                        <h4 class="card-title">Deduction Edit </h4>
+                        <p class="card-description"> Deduction Edit </p>
 
-                        <form action="{{ url('/Bonusesupdate') }}/{{ $Bonuse->id }}" method="POST"
+                        <form action="{{ url('/Deductionsupdate') }}/{{ $Deduction->id }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             
@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <label for="exampleInputName1">Amount</label>
                                 <input type="number" class="form-control" id="exampleInputName1"
-                                    value="{{ $Bonuse->amount }}" name="amount" placeholder="Amount" min="0">
+                                    value="{{ $Deduction->amount }}" name="amount" placeholder="Amount" min="0">
                                 @error('amount')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
@@ -62,7 +62,7 @@
                             <div class="form-group">
                                 <label for="exampleInputName1">Date</label>
                                 <input type="date" class="form-control" id="exampleInputName1"
-                                    value="{{ $Bonuse->date }}" name="date" placeholder="Date">
+                                    value="{{ $Deduction->date }}" name="date" placeholder="Date">
                                 @error('date')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
@@ -71,7 +71,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail3">Remarks</label>
                                 <input type="text" class="form-control" id="exampleInputEmail3"
-                                    value="{{ $Bonuse->remarks }}" name="remarks" placeholder="remarks">
+                                    value="{{ $Deduction->remarks }}" name="remarks" placeholder="remarks">
                                 @error('remarks')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror

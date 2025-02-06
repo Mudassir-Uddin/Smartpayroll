@@ -212,6 +212,22 @@
               </ul>
             </div>
           </li>
+          
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#Deductions" aria-expanded="false" aria-controls="Deductions">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Deductions</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Deductions">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/Deductions">All Deductions</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/DeductionsInsert">Deductions Insert</a></li>
+              </ul>
+            </div>
+          </li>
 
           <li class="nav-item menu-items">
             <a class="nav-link" href="pages/forms/basic_elements.html">

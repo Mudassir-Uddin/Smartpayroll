@@ -3,6 +3,7 @@
 use App\Http\Controllers\AttendancesController;
 use App\Http\Controllers\BonusesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeductionsController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\DesignationsController;
@@ -68,3 +69,10 @@ Route::post('/BonusesStore', [BonusesController::class, 'Store']);
 Route::get('/Bonusesedit/{id}', [BonusesController::class, 'edit']);
 Route::post('/Bonusesupdate/{id}', [BonusesController::class, 'update']);
 Route::get('/Bonusesdelete/{id}', [BonusesController::class, 'delete']);
+
+Route::get('/Deductions', [DeductionsController::class, 'index'])->name('Deduction');
+Route::get('/DeductionsInsert', [DeductionsController::class, 'insert'])->name('DeductionsInsert');
+Route::post('/DeductionsStore', [DeductionsController::class, 'Store']);
+Route::get('/Deductionsedit/{id}', [DeductionsController::class, 'edit']);
+Route::post('/Deductionsupdate/{id}', [DeductionsController::class, 'update']);
+Route::get('/Deductionsdelete/{id}', [DeductionsController::class, 'delete']);

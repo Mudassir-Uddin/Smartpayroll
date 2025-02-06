@@ -24,7 +24,7 @@ class BonusesController extends Controller
         $req->validate([
             'employee_id'=>'required',
             'transaction_types_id'=>'required',
-            'amount'=>'required',
+            'amount'=>'required|integer|min:0',
             'date'=>'required',
             'remarks'=>'required',
             
@@ -51,7 +51,7 @@ class BonusesController extends Controller
         $req->validate([
             'employee_id'=>'required',
             'transaction_types_id'=>'required',
-            'amount'=>'required',
+            'amount'=>'required|integer|min:0',
             'date'=>'required',
             'remarks'=>'required',
         ]);

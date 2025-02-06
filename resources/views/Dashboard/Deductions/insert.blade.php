@@ -3,11 +3,11 @@
     <!-- partial -->
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Bonuse Insert </h3>
+            <h3 class="page-title"> Deduction Insert </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Inserts</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Bonuse Insert</li>
+                    <li class="breadcrumb-item active" aria-current="page">Deduction Insert</li>
                 </ol>
             </nav>
         </div>
@@ -15,9 +15,9 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title"> Bonuse Insert</h4>
-                        <p class="card-description">Bonuse Insert </p>
-                        <form class="forms-sample" action="{{ url('/BonusesStore') }}" method="POST"
+                        <h4 class="card-title"> Deduction Insert</h4>
+                        <p class="card-description">Deduction Insert </p>
+                        <form class="forms-sample" action="{{ url('/DeductionsStore') }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
@@ -76,7 +76,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                            <button class="btn btn-dark"><a href="/Bonuses" class="btn btn-dark">Cancel</a></button>
+                            <button class="btn btn-dark"><a href="/Deductions" class="btn btn-dark">Cancel</a></button>
                         </form>
                     </div>
                 </div>

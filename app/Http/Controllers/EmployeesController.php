@@ -30,7 +30,7 @@ class EmployeesController extends Controller
             'address'=>'required',
             'designation'=>'required',
             'department_id'=>'required',
-            'basic_salary'=>'required',
+            'basic_salary'=>'required|integer|min:0',
             'joining_date'=>'required',
             'status'=>'required',
         ]);
@@ -62,7 +62,17 @@ class EmployeesController extends Controller
     }
     public function Update(Request $req,$id){
         $req->validate([
+            'employee_id'=>'required|max:10',
             'name'=>'required',
+            'img' =>'required',
+            'email' => 'required|email|unique:employees,email',
+            'phone'=>'required|min:11|max:11',
+            'address'=>'required',
+            'designation'=>'required',
+            'department_id'=>'required',
+            'basic_salary'=>'required|integer|min:0',
+            'joining_date'=>'required',
+            'status'=>'required',
         ]);
         $Employee = Employee::find($id);
         $imgname = $Employee->img;
