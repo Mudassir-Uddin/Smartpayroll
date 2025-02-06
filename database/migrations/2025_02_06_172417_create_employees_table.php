@@ -19,11 +19,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->string('address');
-            $table->string('designation');
+            $table->unsignedBigInteger('designation');
+            $table->foreign('designation')->references('id')->on('designations');
             $table->unsignedBigInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments');
-            $table->string('basic_salary');
-            $table->string('joining_date');
+            $table->decimal('basic_salary');
+            $table->date('joining_date');
             $table->boolean('status');
             $table->timestamps();
         });

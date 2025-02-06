@@ -11,15 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bonuses', function (Blueprint $table) {
+        Schema::create('attendance', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees');
-            $table->unsignedBigInteger('transaction_types_id');
-            $table->foreign('transaction_types_id')->references('id')->on('transaction_types');
-            $table->string('amount');
             $table->date('date');
-            $table->string('remarks')->nullable();
+            $table->integer('status');
+            $table->time('time_in')->nullable();
+            $table->time('time_out')->nullable();
+            $table->decimal('worked_hours',5, 2)->nullable();
+            $table->decimal('overtime_hours',5, 2)->nullable();
+            $table->integer('late_minutes')->default(0);
+            $table->integer('early_exit_minutes')->default(0);
+            $table->text('remarks')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bonuses');
+        Schema::dropIfExists('attendance');
     }
 };

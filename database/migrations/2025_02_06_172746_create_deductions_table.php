@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->unsignedBigInteger('transaction_types_id');
             $table->foreign('transaction_types_id')->references('id')->on('transaction_types');
-            $table->string('amount');
+            $table->decimal('amount', 10, 2);
             $table->date('date');
             $table->string('remarks')->nullable();
             $table->timestamps();

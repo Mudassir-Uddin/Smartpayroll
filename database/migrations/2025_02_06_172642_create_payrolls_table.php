@@ -15,14 +15,16 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees');
-            $table->string('month');
-            $table->string('year');
-            $table->string('gross_salary');
-            $table->string('tax_deduction');
-            $table->string('bonuses');
-            $table->string('net_salary');
-            $table->string('status');
-            $table->string('payment_date')->nullable();
+            $table->unsignedBigInteger('attendance_id');
+            $table->foreign('attendance_id')->references('id')->on('attendance');
+            $table->integer('month');
+            $table->integer('year');
+            $table->decimal('gross_salary', 10, 2);
+            $table->decimal('tax_deduction', 10, 2);
+            $table->decimal('bonuses', 10, 2);
+            $table->decimal('net_salary', 10, 2);
+            $table->boolean('status');
+            $table->date('payment_date')->nullable();
             $table->timestamps();
         });
     }

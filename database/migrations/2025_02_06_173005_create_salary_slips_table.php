@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attendance', function (Blueprint $table) {
+        Schema::create('salary_slips', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('payroll_id');
+            $table->foreign('payroll_id')->references('id')->on('payrolls');
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees');
-            $table->date('date');
-            $table->integer('status');
-            $table->time('time_in')->nullable();
-            $table->time('time_out')->nullable();
+            $table->integer('month');
+            $table->integer('year');
+            $table->text('salary_details');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('attendance');
+        Schema::dropIfExists('salary_slips');
     }
 };

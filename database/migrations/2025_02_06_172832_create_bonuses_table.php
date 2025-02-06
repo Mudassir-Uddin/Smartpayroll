@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('salary_slips', function (Blueprint $table) {
+        Schema::create('bonuses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('payroll_id');
-            $table->foreign('payroll_id')->references('id')->on('payrolls');
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees');
-            $table->string('month');
-            $table->string('year');
-            $table->string('salary_details');
+            $table->unsignedBigInteger('transaction_types_id');
+            $table->foreign('transaction_types_id')->references('id')->on('transaction_types');
+            $table->decimal('amount', 10, 2);
+            $table->date('date');
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('salary_slips');
+        Schema::dropIfExists('bonuses');
     }
 };
