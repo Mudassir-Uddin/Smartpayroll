@@ -130,6 +130,21 @@
             </div>
           </li>
 
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#Month" aria-expanded="false" aria-controls="Month">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Months</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Month">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/Months">All Months</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/MonthsInsert">Months Insert</a></li>
+              </ul>
+            </div>
+          </li>
           
           <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#Designations" aria-expanded="false" aria-controls="Designations">

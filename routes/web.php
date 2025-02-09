@@ -8,6 +8,7 @@ use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\DesignationsController;
 use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\MonthsController;
 use App\Http\Controllers\Transaction_TypeController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -76,3 +77,10 @@ Route::post('/DeductionsStore', [DeductionsController::class, 'Store']);
 Route::get('/Deductionsedit/{id}', [DeductionsController::class, 'edit']);
 Route::post('/Deductionsupdate/{id}', [DeductionsController::class, 'update']);
 Route::get('/Deductionsdelete/{id}', [DeductionsController::class, 'delete']);
+
+Route::get('/Months', [MonthsController::class, 'index'])->name('Month');
+Route::get('/MonthsInsert', [MonthsController::class, 'insert'])->name('MonthInsert');
+Route::post('/MonthsStore', [MonthsController::class, 'Store']);
+Route::get('/Monthsedit/{id}', [MonthsController::class, 'edit']);
+Route::post('/Monthsupdate/{id}', [MonthsController::class, 'update']);
+Route::get('/Monthsdelete/{id}', [MonthsController::class, 'delete']);
