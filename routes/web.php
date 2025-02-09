@@ -9,6 +9,7 @@ use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\DesignationsController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\MonthsController;
+use App\Http\Controllers\SalariesController;
 use App\Http\Controllers\Transaction_TypeController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -84,3 +85,10 @@ Route::post('/MonthsStore', [MonthsController::class, 'Store']);
 Route::get('/Monthsedit/{id}', [MonthsController::class, 'edit']);
 Route::post('/Monthsupdate/{id}', [MonthsController::class, 'update']);
 Route::get('/Monthsdelete/{id}', [MonthsController::class, 'delete']);
+
+Route::get('/Salaries', [SalariesController::class, 'index'])->name('Salary');
+Route::get('/SalariesInsert', [SalariesController::class, 'insert'])->name('SalaryInsert');
+Route::post('/SalariesStore', [SalariesController::class, 'Store']);
+Route::get('/Salariesedit/{id}', [SalariesController::class, 'edit']);
+Route::post('/Salariesupdate/{id}', [SalariesController::class, 'update']);
+Route::get('/Salariesdelete/{id}', [SalariesController::class, 'delete']);

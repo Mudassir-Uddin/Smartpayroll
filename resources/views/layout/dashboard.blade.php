@@ -211,6 +211,22 @@
               </ul>
             </div>
           </li>
+          
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#Salaries" aria-expanded="false" aria-controls="Salaries">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Salaries</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Salaries">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/Salaries">All Salaries</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/SalariesInsert">Salaries Insert</a></li>
+              </ul>
+            </div>
+          </li>
 
           <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#Bonuses" aria-expanded="false" aria-controls="Bonuses">
