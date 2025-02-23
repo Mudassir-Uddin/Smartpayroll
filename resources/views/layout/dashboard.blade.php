@@ -129,22 +129,6 @@
               </ul>
             </div>
           </li>
-
-          <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#Month" aria-expanded="false" aria-controls="Month">
-              <span class="menu-icon">
-                <i class="mdi mdi-file-document-box"></i>
-              </span>
-              <span class="menu-title">Months</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="Month">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/Months">All Months</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/MonthsInsert">Months Insert</a></li>
-              </ul>
-            </div>
-          </li>
           
           <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#Designations" aria-expanded="false" aria-controls="Designations">
@@ -161,23 +145,6 @@
               </ul>
             </div>
           </li>
-          
-          <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <span class="menu-icon">
-                <i class="mdi mdi-security"></i>
-              </span>
-              <span class="menu-title">Transaction Types</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/Transactiontypes"> All Transactiontype</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/TransactiontypesInsert"> Transactiontype Insert </a></li>
-              </ul>
-            </div>
-          </li>
-
           
           <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#Employee" aria-expanded="false" aria-controls="Employee">
@@ -213,17 +180,33 @@
           </li>
           
           <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#Salaries" aria-expanded="false" aria-controls="Salaries">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <span class="menu-icon">
+                <i class="mdi mdi-security"></i>
+              </span>
+              <span class="menu-title">Transaction Types</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/Transactiontypes"> All Transactiontype</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/TransactiontypesInsert"> Transactiontype Insert </a></li>
+              </ul>
+            </div>
+          </li>
+          
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#Deductions" aria-expanded="false" aria-controls="Deductions">
               <span class="menu-icon">
                 <i class="mdi mdi-file-document-box"></i>
               </span>
-              <span class="menu-title">Salaries</span>
+              <span class="menu-title">Deductions</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="Salaries">
+            <div class="collapse" id="Deductions">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/Salaries">All Salaries</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/SalariesInsert">Salaries Insert</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/Deductions">All Deductions</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/DeductionsInsert">Deductions Insert</a></li>
               </ul>
             </div>
           </li>
@@ -245,17 +228,49 @@
           </li>
           
           <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#Deductions" aria-expanded="false" aria-controls="Deductions">
+            <a class="nav-link" data-toggle="collapse" href="#Month" aria-expanded="false" aria-controls="Month">
               <span class="menu-icon">
                 <i class="mdi mdi-file-document-box"></i>
               </span>
-              <span class="menu-title">Deductions</span>
+              <span class="menu-title">Months</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="Deductions">
+            <div class="collapse" id="Month">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/Deductions">All Deductions</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/DeductionsInsert">Deductions Insert</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/Months">All Months</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/MonthsInsert">Months Insert</a></li>
+              </ul>
+            </div>
+          </li>
+          
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#Payrolls" aria-expanded="false" aria-controls="Payrolls">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Payrolls</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Payrolls">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/Payrolls">All Payrolls</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/PayrollsInsert">Payrolls Insert</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#Salaries" aria-expanded="false" aria-controls="Salaries">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Salaries</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Salaries">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/Salaries">All Salaries</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/SalariesInsert">Salaries Insert</a></li>
               </ul>
             </div>
           </li>

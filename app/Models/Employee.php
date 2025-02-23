@@ -54,4 +54,28 @@ class Employee extends Model
         return $this->belongsTo(Designation::class, 'designation');
     }
     
+        // Check if employee is late 3 times in a month and deduct one day's salary
+        public function checkLateDeductions()
+        {
+            $lateCount = Attendance::where('employee_id', $this->id)
+                ->whereMonth('date', now()->month)
+                ->where('late_minutes', '>', 0)
+                ->count();
+    
+            if ($lateCount >= 3) {
+                // Deduct one day's salary
+                $dailySalary = $this->basic_salary / 30; // Assuming 30 days in a month
+                $this->deductSalary($dailySalary);
+            }
+        }
+    
+        // Deduct salary and create an entry in the salaries table
+        public function deductSalary($amount)
+        {
+            Salary::create([
+                'employee_id' => $this->id,
+                'date' => now(),
+                'amount' => -$amount, // Deducted amount
+            ]);
+        }
 }

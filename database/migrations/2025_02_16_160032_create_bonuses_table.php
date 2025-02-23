@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('deductions', function (Blueprint $table) {
+        Schema::create('bonuses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->unsignedBigInteger('transaction_types_id');
             $table->foreign('transaction_types_id')->references('id')->on('transaction_types');
+            $table->unsignedBigInteger('month_id');
+            $table->foreign('month_id')->references('id')->on('months')->onDelete('cascade');
+            $table->smallInteger('year');
             $table->decimal('amount', 10, 2);
-            $table->date('date');
             $table->string('remarks')->nullable();
             $table->timestamps();
         });
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('deductions');
+        Schema::dropIfExists('bonuses');
     }
 };

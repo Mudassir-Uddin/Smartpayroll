@@ -24,14 +24,11 @@
 
                             <div class="form-group">
                                 <select name="employee_id" id="" class="js-example-basic-single" style="width:100%">
-                                    @foreach ($Employee_Id as $employee_id)
-                                        {{-- <option value="0">Select SubServices</option> --}}
-                                        @if ($employee_id->id == $employee_id->brand_id)
-                                            <option value="{{ $employee_id->id }}" selected>{{ $employee_id->employee_id }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $employee_id->id }}">{{ $employee_id->employee_id }}</option>
-                                        @endif
+                                    @foreach ($Employee_Id as $employee)
+                                        <option value="{{ $employee->id }}" 
+                                            {{ (isset($selectedEmployeeId) && $selectedEmployeeId == $employee->id) ? 'selected' : '' }}>
+                                            {{ $employee->employee_id }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -86,6 +83,54 @@
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                            <!-- Worked Hours -->
+                            {{-- <div class="form-group">
+                                <label for="exampleInputEmail3">Worked Hours</label>
+                                <input type="number" step="0.01" name="worked_hours" class="form-control" id="exampleInputEmail3"
+                                value="{{ $Attendance->worked_hours }}" readonly>
+                                @error('worked_hours')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div> --}}
+                            <!-- Overtime Hours -->
+                            {{-- <div class="form-group">
+                                <label for="exampleInputEmail3">Overtime Hours</label>
+                                <input type="number" step="0.01" name="overtime_hours" class="form-control" id="exampleInputEmail3"
+                                value="{{ $Attendance->overtime_hours }}" readonly>
+                                @error('overtime_hours')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div> --}}
+                            
+                            <!-- Late Minutes -->
+                            {{-- <div class="form-group">
+                                <label for="exampleInputEmail3">Late Minutes</label>
+                                <input type="number" step="0.01" name="late_minutes" class="form-control" id="exampleInputEmail3"
+                                value="{{ $Attendance->late_minutes }}" readonly>
+                                @error('late_minutes')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div> --}}
+                            
+                            <!-- Early Exit Minutes -->
+                            {{-- <div class="form-group">
+                                <label for="exampleInputEmail3">Early Exit Minutes</label>
+                                <input type="number" step="0.01" name="early_exit_minutes" class="form-control" id="exampleInputEmail3"
+                                value="{{ $Attendance->early_exit_minutes }}" readonly>
+                                @error('early_exit_minutes')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div> --}}
+                            
+                            <!-- Daily Salary -->
+                            {{-- <div class="form-group">
+                                <label for="exampleInputEmail3">Daily Salary</label>
+                                <input type="number" step="0.01" name="daily_salary" class="form-control" id="exampleInputEmail3"
+                                value="{{ $Attendance->daily_salary }}" readonly>
+                                @error('daily_salary')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div> --}}
 
                             <button type="submit" class="btn btn-primary py-3 w-100 mb-4">eidt</button>
                         </form>

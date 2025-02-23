@@ -23,8 +23,8 @@
                             <div class="form-group">
                                 <label>Select Employee_id:</label>
                                 <select class="js-example-basic-single" name="employee_id" style="width:100%">
-                                  <option value="" disabled>Select employee_id</option>
-                                  @foreach ($employee_Id as $employee_id)
+                                    <option value="" disabled>Select employee_id</option>
+                                    @foreach ($employee_Id as $employee_id)
                                         <option value="{{ $employee_id->id }}">{{ $employee_id->employee_id }}</option>
                                     @endforeach
                                 </select>
@@ -36,17 +36,36 @@
                             <div class="form-group">
                                 <label>Select Transaction_Types:</label>
                                 <select class="js-example-basic-single" name="transaction_types_id" style="width:100%">
-                                  <option value="" disabled>Select transaction_types_id</option>
-                                  @foreach ($transaction_types_Id as $transaction_types_id)
-                                        <option value="{{ $transaction_types_id->id }}">{{ $transaction_types_id->type }}</option>
+                                    <option value="" disabled>Select transaction_types_id</option>
+                                    @foreach ($transaction_types_Id as $transaction_types_id)
+                                        <option value="{{ $transaction_types_id->id }}">{{ $transaction_types_id->type }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('transaction_types_id')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                              </div>
+                            </div>
 
+                            <!-- Month Selection -->
+                            <div class="form-group">
+                                <label class="form-label">Month</label>
+                                <select name="month_id" class="form-control" required>
+                                    @foreach ($months as $month)
+                                        <option value="{{ $month->id }}">{{ $month->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('month_id')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                            </div>
 
+                            <!-- Year Selection -->
+                            <div class="form-group">
+                                <label class="form-label">Year</label>
+                                <input type="number" name="year" class="form-control" value="{{ date('Y') }}"
+                                    required>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Amount</label>
                                 <input type="number" name="amount" class="form-control" id="exampleInputName1"
@@ -55,16 +74,6 @@
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-
-                            <div class="form-group">
-                                <label for="exampleInputName1">Date</label>
-                                <input type="date" name="date" class="form-control" id="exampleInputName1"
-                                    placeholder="Date" value="{{ old('date') }}">
-                                @error('date')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-
 
                             <div class="form-group">
                                 <label for="exampleInputName1">remarks</label>

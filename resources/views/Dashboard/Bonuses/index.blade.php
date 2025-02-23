@@ -25,8 +25,9 @@
                                         <th> Sn </th>
                                         <th> Employee Id </th>
                                         <th> Bonuses </th>
+                                        <th> Month </th>
+                                        <th> Year </th>
                                         <th> Amount </th>
-                                        <th> Date </th>
                                         <th> Remarks </th>
                                         <th> Date </th>
                                         <th> Action </th>
@@ -41,8 +42,9 @@
                                             <th scope="row">{{ ++$i }}</th>
                                             <td>{{ $Bs->Employee->employee_id }}</td>
                                             <td>{{ $Bs->TransactionType->type }}</td>
+                                            <td>{{ $Bs->month->name }}</td>
+                                            <td>{{ $Bs->year }}</td>
                                             <td>{{ $Bs->amount }}</td>
-                                            <td>{{ $Bs->date }}</td>
                                             <td>{{ $Bs->remarks }}</td>
                                            
                                             <td>{{ $Bs->updated_at = date('Y-m-d') }}</td>

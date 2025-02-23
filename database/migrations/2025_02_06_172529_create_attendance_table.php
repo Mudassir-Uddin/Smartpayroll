@@ -20,9 +20,13 @@ return new class extends Migration
             $table->time('time_in')->nullable();
             $table->time('time_out')->nullable();
             $table->decimal('worked_hours',5, 2)->nullable();
-            $table->decimal('overtime_hours',5, 2)->nullable();
             $table->integer('late_minutes')->default(0);
             $table->integer('early_exit_minutes')->default(0);
+            $table->integer('total_present')->default(0);
+            $table->integer('total_absent')->default(0);
+            $table->integer('total_late')->default(0);
+            $table->decimal('daily_salary', 8, 2)->nullable();
+            $table->decimal('total_salary', 10, 2)->default(0);
             $table->text('remarks')->nullable();
             $table->timestamps();
         });

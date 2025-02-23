@@ -20,4 +20,8 @@ class Deduction extends Model
     {
         return $this->belongsTo(TransactionType::class, 'transaction_types_id');
     }
+    public function month()
+    {
+        return $this->belongsTo(Month::class);
+    }
 }

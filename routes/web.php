@@ -9,6 +9,7 @@ use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\DesignationsController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\MonthsController;
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\SalariesController;
 use App\Http\Controllers\Transaction_TypeController;
 use App\Http\Controllers\UsersController;
@@ -64,6 +65,7 @@ Route::post('/AttendancesStore', [AttendancesController::class, 'Store']);
 Route::get('/Attendancesedit/{id}', [AttendancesController::class, 'edit']);
 Route::post('/Attendancesupdate/{id}', [AttendancesController::class, 'update']);
 Route::get('/Attendancesdelete/{id}', [AttendancesController::class, 'delete']);
+Route::resource('attendance', AttendancesController::class);
 
 Route::get('/Bonuses', [BonusesController::class, 'index'])->name('Bonuse');
 Route::get('/BonusesInsert', [BonusesController::class, 'insert'])->name('BonuseInsert');
@@ -92,3 +94,10 @@ Route::post('/SalariesStore', [SalariesController::class, 'Store']);
 Route::get('/Salariesedit/{id}', [SalariesController::class, 'edit']);
 Route::post('/Salariesupdate/{id}', [SalariesController::class, 'update']);
 Route::get('/Salariesdelete/{id}', [SalariesController::class, 'delete']);
+
+Route::get('/Payrolls', [PayrollController::class, 'index'])->name('Payroll');
+Route::get('/PayrollsInsert', [PayrollController::class, 'insert'])->name('PayrollInsert');
+Route::post('/PayrollsStore', [PayrollController::class, 'Store']);
+Route::get('/Payrollsedit/{id}', [PayrollController::class, 'edit']);
+Route::post('/Payrollsupdate/{id}', [PayrollController::class, 'update']);
+Route::get('/Payrollsdelete/{id}', [PayrollController::class, 'delete']);

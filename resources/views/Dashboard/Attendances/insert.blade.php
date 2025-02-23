@@ -17,6 +17,9 @@
                     <div class="card-body">
                         <h4 class="card-title"> Attendance Insert</h4>
                         <p class="card-description">Attendance Insert </p>
+                        @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
                         <form class="forms-sample" action="{{ url('/AttendancesStore') }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf

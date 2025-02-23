@@ -15,58 +15,99 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
+                        <!-- Filter Form -->
+                    <form method="GET" action="{{ url('/Attendances') }}" class="mb-4">
+                        <label>Month:</label>
+                        <select name="month">
+                            <option value="">All</option>
+                            @for ($m = 1; $m <= 12; $m++)
+                                <option value="{{ $m }}" {{ request('month') == $m ? 'selected' : '' }}>
+                                    {{ date('F', mktime(0, 0, 0, $m, 1)) }}
+                                </option>
+                            @endfor
+                        </select>
+
+                        <label>Employee:</label>
+                        <select name="employee_id">
+                            <option value="">All</option>
+                            @foreach ($employees as $employee)
+                                <option value="{{ $employee->id }}"
+                                    {{ request('employee_id') == $employee->id ? 'selected' : '' }}>
+                                    {{ $employee->name }}
+                                </option>
+                            @endforeach
+                        </select>
+
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </form>
+
                         <h4 class="card-title">Attendance table</h4>
                         <p class="card-description"> Add Attendance :-  <code><a href="/AttendancesInsert">Attendances-Insert</a></code>
                         </p>
                         <div class="table-responsive">
-                            <table id="employeeTable" class="table table-bordered">
+                            <table class="table table-bordered" id="employeeTable">
                                 <thead>
                                     <tr>
-                                        <th> Sn </th>
-                                        <th> Employee Id </th>
-                                        <th> Date </th>
-                                        <th> Status </th>
-                                        <th> Time IN </th>
-                                        <th> Time OUT </th>
-                                        <th> Date </th>
-                                        <th> Action </th>
+                                        <th>Emp Id</th>
+                                        <th>Emp Name</th>
+                                        <th>Date</th>
+                                        <th>Time In</th>
+                                        <th>Time Out</th>
+                                        <th>Worked Hours</th>
+                                        <th>Late Minutes</th>
+                                        <th>Early Exit</th>
+                                        <th>Total Present</th>
+                                        <th>Total Absent</th>
+                                        <th>Total Late</th>
+                                        <th>Daily Salary</th>
+                                        <th>Total Salary</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $i = 0;
-                                    @endphp
-                                    @foreach ($Attendances as $Ep)
-                                        <tr>
-                                            <th scope="row">{{ ++$i }}</th>
-                                            <td>{{ $Ep->Employee->employee_id }}</td>
-                                            <td>{{ $Ep->date }}</td>
-                                            <td>
-                                                @if ($Ep->status == 1)
-                                                    <option value="1">Present</option>
-                                                @elseif ($Ep->status == 2)
-                                                    <option value="2">Absent</option>
-                                                    {{-- @endforeach --}}
-                                                @elseif ($Ep->status == 3)
-                                                    <option value="3">Half-Day</option>
-                                                    {{-- @endforeach --}}
-                                                @else
-                                                    <option value="4">Leave</option>
-                                                @endif
-                                            </td>
-                                            <td>{{ $Ep->time_in }}</td>
-                                            <td>{{ $Ep->time_out }}</td>
-                                            <td>{{ $Ep->updated_at = date('Y-m-d') }}</td>
-                                            <td>
-                                                <button class="btn btn-warning "><a class="text-white"
-                                                        href="{{ url('/Attendancesedit') }}/{{ $Ep->id * 548548 }}">Edit</a></button>
-                                                <button onclick="myfun({{ $Ep->id }})"
-                                                    class="btn btn-danger">Delete</button>
-                                            </td>
-                                        </tr>
+                                    @foreach($Attendances as $attendance)
+                                    <tr>
+                                        <td>{{ $attendance->employee->employee_id }}</td>
+                                        <td>{{ $attendance->employee->name }}</td>
+                                        <td>{{ $attendance->date }}</td>
+                                        <td>{{ $attendance->time_in ?? 'N/A' }}</td>
+                                        <td>{{ $attendance->time_out ?? 'N/A' }}</td>
+                                        <td>{{ $attendance->worked_hours }}</td>
+                                        <td>{{ $attendance->late_minutes }}</td>
+                                        <td>{{ $attendance->early_exit_minutes }}</td>
+                                        <td>{{ $attendance->total_present }}</td>
+                                        <td>{{ $attendance->total_absent }}</td>
+                                        <td>{{ $attendance->total_late }}</td>
+                                        <td>{{ $attendance->daily_salary }}</td>
+                                        <td>{{ $attendance->total_salary }}</td>
+                                        <td>
+                                            @if ($attendance->time_in == null || $attendance->time_out == null)
+                                                <span class="badge bg-danger">Absent</span>
+                                            @elseif (\Carbon\Carbon::parse($attendance->time_in)->greaterThan(\Carbon\Carbon::createFromTime(8, 45, 0)) || 
+                                                    \Carbon\Carbon::parse($attendance->time_out)->lessThan(\Carbon\Carbon::createFromTime(16, 45, 0)))
+                                                <span class="badge bg-danger">Absent</span>
+                                            @elseif (\Carbon\Carbon::parse($attendance->time_in)->greaterThan(\Carbon\Carbon::createFromTime(8, 0, 0)) &&
+                                                    \Carbon\Carbon::parse($attendance->time_in)->lessThanOrEqualTo(\Carbon\Carbon::createFromTime(8, 45, 0)))
+                                                <span class="badge bg-warning">Late</span>
+                                            @elseif (\Carbon\Carbon::parse($attendance->time_in)->lessThanOrEqualTo(\Carbon\Carbon::createFromTime(8, 0, 0)) && 
+                                                    \Carbon\Carbon::parse($attendance->time_out)->greaterThanOrEqualTo(\Carbon\Carbon::createFromTime(17, 0, 0)))
+                                                <span class="badge bg-success">Present</span>
+                                            @else
+                                                <span class="badge bg-secondary">Unknown</span> <!-- Default case, just in case -->
+                                            @endif
+                                        </td>
+                                        
+                                        <td>
+                                            <a href="{{ url('/Attendancesedit') }}/{{ $attendance->id * 548548 }}" class="btn btn-primary">Edit</a>
+                                            <button onclick="myfun({{ $attendance->id }})"
+                                                class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                            
                         </div>
                     </div>
                 </div>

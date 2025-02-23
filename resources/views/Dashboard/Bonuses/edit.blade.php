@@ -49,21 +49,31 @@
                                     @endforeach
                                 </select>
                             </div>
-                            
+
+                            <div class="form-group">
+                                <select name="month_id" id="" class="js-example-basic-single" style="width:100%">
+                                    @foreach ($months as $month)
+                                        {{-- <option value="0">Select SubServices</option> --}}
+                                        @if ($month->id == $month->name)
+                                            <option value="{{ $month->id }}" selected>{{ $month->name }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $month->id }}">{{ $month->name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="year">Year</label>
+                                <input type="number" name="year" class="form-control" value="{{ $Bonuse->year }}" required min="2000">
+                            </div>
+
                             <div class="form-group">
                                 <label for="exampleInputName1">Amount</label>
                                 <input type="number" class="form-control" id="exampleInputName1"
                                     value="{{ $Bonuse->amount }}" name="amount" placeholder="Amount" min="0">
                                 @error('amount')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleInputName1">Date</label>
-                                <input type="date" class="form-control" id="exampleInputName1"
-                                    value="{{ $Bonuse->date }}" name="date" placeholder="Date">
-                                @error('date')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>

@@ -46,6 +46,21 @@
                                 @enderror
                               </div>
 
+            <!-- Month Selection -->
+            <div class="form-group">
+                <label class="form-label">Month</label>
+                <select name="month_id" class="form-control" required>
+                    @foreach($months as $month)
+                        <option value="{{ $month->id }}">{{ $month->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <!-- Year Selection -->
+            <div class="form-group">
+                <label class="form-label">Year</label>
+                <input type="number" name="year" class="form-control" value="{{ date('Y') }}" required>
+            </div>
 
                             <div class="form-group">
                                 <label for="exampleInputName1">Amount</label>
@@ -55,16 +70,6 @@
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-
-                            <div class="form-group">
-                                <label for="exampleInputName1">Date</label>
-                                <input type="date" name="date" class="form-control" id="exampleInputName1"
-                                    placeholder="Date" value="{{ old('date') }}">
-                                @error('date')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-
 
                             <div class="form-group">
                                 <label for="exampleInputName1">remarks</label>
