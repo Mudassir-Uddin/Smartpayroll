@@ -24,6 +24,7 @@
                                     <tr>
                                         <th> Sn </th>
                                         <th> Name </th>
+                                        <th> Basic Salary </th>
                                         <th> Date </th>
                                         <th> Action </th>
                                     </tr>
@@ -36,6 +37,7 @@
                                         <tr>
                                             <th scope="row">{{ ++$i }}</th>
                                             <td>{{ $ct->name }}</td>
+                                            <td>{{ $ct->basic_salary }}</td>
                                             <td>{{ $ct->updated_at = date('Y-m-d') }}</td>
                                             <td>
                                                 <button class="btn btn-warning "><a class="text-white"

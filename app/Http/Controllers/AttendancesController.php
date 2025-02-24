@@ -80,7 +80,7 @@ class AttendancesController extends Controller
     
         // **Fetch Employee Salary**
         $employee = Employee::findOrFail($req->employee_id);
-        $dailySalary = round($employee->basic_salary / 26, 2);
+        $dailySalary = round($employee->Designation->basic_salary / 26, 2);
     
         // **If either time_in or time_out is null, set status = 2 (Incomplete)**
         $status = ($timeIn === null || $timeOut === null) ? 2 : $req->status;
@@ -143,7 +143,7 @@ class AttendancesController extends Controller
     
         $workedHours = ($timeIn && $timeOut) ? $timeOut->diffInHours($timeIn) : 0;
         $overtimeHours = max(0, $workedHours - 9);
-        $dailySalary = round($attendance->employee->basic_salary / 26, 2);
+        $dailySalary = round($attendance->employee->Designation->basic_salary / 26, 2);
     
         $attendance->update([
             'employee_id' => $req->employee_id,

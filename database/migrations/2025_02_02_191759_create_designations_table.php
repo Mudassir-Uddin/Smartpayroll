@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('designations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->decimal('basic_salary'); // e.g., 34000, 30000
             $table->timestamps();
         });
     }

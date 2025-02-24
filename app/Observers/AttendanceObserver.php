@@ -83,7 +83,7 @@ class AttendanceObserver
         // **Salary Calculation**
         $employee = Employee::find($attendance->employee_id);
         if ($employee) {
-            $dailySalary = round($employee->basic_salary / 26, 2);
+            $dailySalary = round($employee->Designation->basic_salary / 26, 2);
     
             if ($attendance->total_absent == 1) {
                 $attendance->daily_salary = 0;

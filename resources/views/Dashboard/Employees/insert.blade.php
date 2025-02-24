@@ -76,7 +76,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Select designation_id:</label>
                                 <select class="js-example-basic-single" name="designation" style="width:100%">
                                   <option value="" disabled>Select designation_id</option>
@@ -87,8 +87,17 @@
                                 @error('designation_id')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
 
+                            <select id="designation" class="js-example-basic-single" name="designation" style="width:100%">
+                                <option value="" disabled selected>Select Designation</option>
+                                @foreach ($designation_Id as $designation)
+                                    <option value="{{ $designation->id }}">{{ $designation->name }}</option>
+                                @endforeach
+                            </select>
+                            
+                            
+                            
                             <div class="form-group">
                                 <label>Select department_id:</label>
                                 <select class="js-example-basic-single" name="department_id" style="width:100%">
@@ -116,15 +125,36 @@
                             </div> --}}
 
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="exampleInputEmail3">Basic Salary</label>
                                 <input type="number" name="basic_salary" class="form-control" id="exampleInputEmail3"
-                                    placeholder="Basic Salary" value="{{ old('basic_salary') }}" min="0">
+                                placeholder="Basic Salary" value="{{ old('basic_salary') }}" min="0">
                                 @error('basic_salary')
-                                    <p class="text-danger">{{ $message }}</p>
+                                <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
+
                             
+                            {{-- <div class="form-group">
+                                <label>Select Basic Salary</label>
+                                <select class="js-example-basic-single" name="basic_salary" style="width:100%">
+                                    <option value="" disabled>Select Basic_Salary</option>
+                                    @foreach ($designation_Id as $Basic_Salary)
+                                    <option value="{{ $Basic_Salary->id }}">{{ $Basic_Salary->basic_salary }}</option>
+                                    @endforeach
+                                </select>
+                                @error('basic_salary')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div> --}}
+                            <div class="form-group">
+                              <label for="exampleInputEmail3">Basic Salary</label>
+                            <input type="text" id="basic_salary" name="basic_salary" class="form-control" readonly>
+                            @error('basic_salary')  
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                          </div>
+                          
                             <div class="form-group">
                               <label for="exampleInputEmail3">Joining Date</label>
                               <input type="date" name="joining_date" class="form-control" id="exampleInputEmail3"
@@ -157,4 +187,31 @@
             </div>
         </div>
         <!-- content-wrapper ends -->
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#designation').change(function () {
+                    var designation_id = $(this).val();
+                    if (designation_id) {
+                        $.ajax({
+                            url: "/getBasicSalary/" + designation_id,
+                            type: "GET",
+                            dataType: "json",
+                            success: function (data) {
+                                if (data) {
+                                    $('#basic_salary').val(data.basic_salary);
+                                }
+                            },
+                            error: function () {
+                                alert('Error fetching salary data');
+                            }
+                        });
+                    } else {
+                        $('#basic_salary').val('');
+                    }
+                });
+            });
+        </script>
+        
     @endsection

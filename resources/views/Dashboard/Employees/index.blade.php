@@ -53,7 +53,7 @@
                                             <td>{{ $Ep->address }}</td>
                                             <td>{{ $Ep->Designation->name }}</td>
                                             <td>{{ $Ep->Department->name }}</td>
-                                            <td>{{ $Ep->basic_salary }}</td>
+                                            <td>{{ $Ep->Designation->basic_salary }}</td>
                                             <td>{{ $Ep->joining_date }}</td>
                                             <td>
                                                 @if ($Ep->status == 1)

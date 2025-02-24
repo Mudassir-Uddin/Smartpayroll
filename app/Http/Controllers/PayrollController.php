@@ -62,7 +62,7 @@ class PayrollController extends Controller
         $total_late = $attendances->where('total_late', 1)->count();
     
         // Basic Salary
-        $basic_salary = $employee->basic_salary;
+        $basic_salary = $employee->Designation->basic_salary;
         $daily_salary = $basic_salary / 26;
     
         // Late & Absent Deductions
@@ -147,7 +147,7 @@ class PayrollController extends Controller
         $total_late = $attendances->where('total_late', 1)->count();
     
         // Basic Salary
-        $basic_salary = $employee->basic_salary;
+        $basic_salary = $employee->Designation->basic_salary;
         $daily_salary = $basic_salary / 26;
     
         // Late & Absent Deductions

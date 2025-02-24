@@ -53,9 +53,9 @@
                                         <th>Date</th>
                                         <th>Time In</th>
                                         <th>Time Out</th>
-                                        <th>Worked Hours</th>
+                                        {{-- <th>Worked Hours</th>
                                         <th>Late Minutes</th>
-                                        <th>Early Exit</th>
+                                        <th>Early Exit</th> --}}
                                         <th>Total Present</th>
                                         <th>Total Absent</th>
                                         <th>Total Late</th>
@@ -73,9 +73,9 @@
                                         <td>{{ $attendance->date }}</td>
                                         <td>{{ $attendance->time_in ?? 'N/A' }}</td>
                                         <td>{{ $attendance->time_out ?? 'N/A' }}</td>
-                                        <td>{{ $attendance->worked_hours }}</td>
+                                        {{-- <td>{{ $attendance->worked_hours }}</td>
                                         <td>{{ $attendance->late_minutes }}</td>
-                                        <td>{{ $attendance->early_exit_minutes }}</td>
+                                        <td>{{ $attendance->early_exit_minutes }}</td> --}}
                                         <td>{{ $attendance->total_present }}</td>
                                         <td>{{ $attendance->total_absent }}</td>
                                         <td>{{ $attendance->total_late }}</td>

@@ -88,20 +88,34 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="exampleInputEmail3">Designation</label>
                                 <input type="text" class="form-control" id="exampleInputEmail3"
                                     value="{{ $Employee->designation }}" name="designation" placeholder="Designation">
                                 @error('designation')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
+                            </div> --}}
+                            
+                            <div class="form-group">
+                                <select name="designation_id" id="" class="js-example-basic-single" style="width:100%">
+                                    @foreach ($designation_Id as $designation_id)
+                                        {{-- <option value="0">Select SubServices</option> --}}
+                                        @if ($designation_id->id == $designation_id->name)
+                                            <option value="{{ $designation_id->id }}" selected>{{ $designation_id->name }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $designation_id->id }}">{{ $designation_id->name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">
                                 <select name="department_id" id="" class="js-example-basic-single" style="width:100%">
                                     @foreach ($department_Id as $department_id)
                                         {{-- <option value="0">Select SubServices</option> --}}
-                                        @if ($department_id->id == $department_id->brand_id)
+                                        @if ($department_id->id == $department_id->name)
                                             <option value="{{ $department_id->id }}" selected>{{ $department_id->name }}
                                             </option>
                                         @else
@@ -119,6 +133,20 @@
                                 @error('basic_salary')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <select name="designation_id" id="" class="js-example-basic-single" style="width:100%">
+                                    @foreach ($designation_Id as $designation_id)
+                                        {{-- <option value="0">Select SubServices</option> --}}
+                                        @if ($designation_id->id == $designation_id->basic_salary)
+                                            <option value="{{ $designation_id->id }}" selected>{{ $designation_id->basic_salary }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $designation_id->id }}">{{ $designation_id->basic_salary }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">

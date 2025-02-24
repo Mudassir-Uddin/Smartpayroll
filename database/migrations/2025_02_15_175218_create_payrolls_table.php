@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('month_id');
             $table->foreign('month_id')->references('id')->on('months')->onDelete('cascade');
         
-            $table->unsignedBigInteger('attendance_id');
+            $table->unsignedBigInteger('attendance_id')->nullable();
             $table->foreign('attendance_id')->references('id')->on('attendance')->onDelete('cascade');
         
             $table->smallInteger('year'); // Auto-filled with current year

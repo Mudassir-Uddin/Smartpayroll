@@ -22,11 +22,22 @@
                             enctype="multipart/form-data">
                             @csrf
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <select name="employee_id" id="" class="js-example-basic-single" style="width:100%">
                                     @foreach ($Employee_Id as $employee)
                                         <option value="{{ $employee->id }}" 
                                             {{ (isset($selectedEmployeeId) && $selectedEmployeeId == $employee->id) ? 'selected' : '' }}>
+                                            {{ $employee->employee_id }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div> --}}
+
+                            <div class="form-group">
+                                <label for="employee_id">Employee</label>
+                                <select name="employee_id" class="form-control" required>
+                                    @foreach($Employee_Id as $employee)
+                                        <option value="{{ $employee->id }}" {{ $Attendance->employee_id == $employee->id ? 'selected' : '' }}>
                                             {{ $employee->employee_id }}
                                         </option>
                                     @endforeach

@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 class EmployeesController extends Controller
 {
     //
+    public function getBasicSalary($id)
+{
+    $designation = Designation::find($id);
+    return response()->json(['basic_salary' => $designation ? $designation->basic_salary : 0]);
+}
+
     public function index(){
         $Employee = Employee::all();
         return view('Dashboard.Employees.index',compact('Employee'));
@@ -30,7 +36,7 @@ class EmployeesController extends Controller
             'address'=>'required',
             'designation'=>'required',
             'department_id'=>'required',
-            'basic_salary'=>'required|integer|min:0',
+            'basic_salary'=>'required',
             'joining_date'=>'required',
             'status'=>'required',
         ]);
@@ -57,7 +63,7 @@ class EmployeesController extends Controller
     }
     public function Edit($id){
         $department_Id = Department::all();
-        $Employee = Employee::Where('id', $id/548548)->first();;
+        $Employee = Employee::Where('id', $id/548548)->first();
         return view('Dashboard.Employees.edit', compact('Employee','department_Id'));
     }
     public function Update(Request $req,$id){

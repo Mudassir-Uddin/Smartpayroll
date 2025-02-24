@@ -52,6 +52,8 @@ Route::get('/Employeesedit/{id}', [EmployeesController::class, 'edit']);
 Route::post('/Employeesupdate/{id}', [EmployeesController::class, 'update']);
 Route::get('/Employeesdelete/{id}', [EmployeesController::class, 'delete']);
 
+Route::get('/getBasicSalary/{id}', [EmployeesController::class, 'getBasicSalary']);
+
 Route::get('/Designations', [DesignationController::class, 'index'])->name('Designation');
 Route::get('/DesignationsInsert', [DesignationController::class, 'insert'])->name('DesignationInsert');
 Route::post('/DesignationsStore', [DesignationController::class, 'Store']);

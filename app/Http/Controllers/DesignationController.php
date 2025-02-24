@@ -21,6 +21,7 @@ class DesignationController extends Controller
         ]);
         $Designation = new Designation();
         $Designation->name = $req->name;
+        $Designation->basic_salary = $req->basic_salary;
         $Designation->save();
         return redirect('/Designations');
 
@@ -36,6 +37,7 @@ class DesignationController extends Controller
         ]);
         $Designation = Designation::find($id);
         $Designation->name = $req->name;
+        $Designation->basic_salary = $req->basic_salary;
         $Designation->save();
         return redirect('/Designations');
     }
