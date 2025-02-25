@@ -63,20 +63,18 @@ class EmployeesController extends Controller
     }
     public function Edit($id){
         $department_Id = Department::all();
+        $designation_Id = Designation::all();
         $Employee = Employee::Where('id', $id/548548)->first();
-        return view('Dashboard.Employees.edit', compact('Employee','department_Id'));
+        return view('Dashboard.Employees.edit', compact('Employee','department_Id','designation_Id'));
     }
     public function Update(Request $req,$id){
         $req->validate([
             'employee_id'=>'required|max:10',
             'name'=>'required',
-            'img' =>'required',
-            'email' => 'required|email|unique:employees,email',
             'phone'=>'required|min:11|max:11',
             'address'=>'required',
             'designation'=>'required',
             'department_id'=>'required',
-            'basic_salary'=>'required|integer|min:0',
             'joining_date'=>'required',
             'status'=>'required',
         ]);

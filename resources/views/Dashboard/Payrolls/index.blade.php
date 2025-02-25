@@ -65,6 +65,7 @@
                                         <th>Deductions</th>
                                         <th>Bonuses</th>
                                         <th>Net Salary</th>
+                                        <th>Salary Slip</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -83,6 +84,10 @@
                                             <td>{{ number_format($payroll->deductions, 2) }}</td>
                                             <td>{{ number_format($payroll->bonuses,2) }}</td>
                                             <td>{{ number_format($payroll->net_salary, 2) }}</td>
+                                            <td>
+                                                <a href="{{ url('/payrolls/salary-slip', $payroll->id) }}" class="btn btn-sm btn-primary">Salary Slip</a>
+                                            </td>
+                                            
                                             <td>
                                                 @if ($payroll->status == 1)
                                                     <span class="badge bg-success">Paid</span>

@@ -103,3 +103,5 @@ Route::post('/PayrollsStore', [PayrollController::class, 'Store']);
 Route::get('/Payrollsedit/{id}', [PayrollController::class, 'edit']);
 Route::post('/Payrollsupdate/{id}', [PayrollController::class, 'update']);
 Route::get('/Payrollsdelete/{id}', [PayrollController::class, 'delete']);
+
+Route::get('/payrolls/salary-slip/{id}', [PayrollController::class, 'generateSalarySlip']);

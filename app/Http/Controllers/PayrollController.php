@@ -9,6 +9,7 @@ use App\Models\Payroll;
 use App\Models\Employee;
 use App\Models\Attendance;
 use App\Models\Month;
+use PDF;
 
 class PayrollController extends Controller
 {
@@ -199,6 +200,18 @@ class PayrollController extends Controller
         Payroll::findOrFail($id)->delete();
         return redirect('/Payrolls')->with('success', 'Payroll deleted.');
     }
+    
+    
+    // Salary Slip View
+    public function generateSalarySlip($id)
+    {
+        $payroll = Payroll::with('employee')->findOrFail($id);
+
+        // Load view and convert it to PDF
+        $pdf = PDF::loadView('Dashboard.Payrolls.salary-slip', compact('payroll'));
+
+        // Download PDF
+        return $pdf->download('salary_slip_'.$payroll->employee->name.'.pdf');
+    }
+
 }
-
-
