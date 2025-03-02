@@ -1,13 +1,12 @@
 @extends('layout.dashboard')
 @section('mydashboard')
-    <!-- partial -->
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title"> Employee Edit </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Edits</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"> Employee Edit </li>
+                    <li class="breadcrumb-item"><a href="#">Edit</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Employee Edit</li>
                 </ol>
             </nav>
         </div>
@@ -15,176 +14,127 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Employee Edit </h4>
-                        <p class="card-description"> Employee Edit </p>
-
+                        <h4 class="card-title"> Employee Edit</h4>
+                       
                         <form action="{{ url('/Employeesupdate') }}/{{ $Employee->id }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
-
                             <div class="form-group">
-                                <label for="exampleInputName1">Employee Id</label>
-                                <input type="number" class="form-control" id="exampleInputName1"
-                                    value="{{ $Employee->employee_id }}" name="employee_id" placeholder="Employee Id">
-                                @error('employee_id')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
+                                <label>Employee ID</label>
+                                <input type="text" name="employee_id" class="form-control" value="{{ old('employee_id', $Employee->employee_id) }}" readonly>
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputName1">Employee Name</label>
-                                <input type="text" class="form-control" id="exampleInputName1"
-                                    value="{{ $Employee->name }}" name="name" placeholder="Employee Name">
-                                @error('name')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
+                                <label>Name</label>
+                                <input type="text" name="name" class="form-control" value="{{ old('name', $Employee->name) }}">
                             </div>
 
                             <div class="form-group">
-                                <label>File upload</label>
-                                <input type="file" name="img" class="file-upload-default">
-                                <div class="input-group col-xs-12">
-                                    <input type="file" name="img" class="form-control file-upload-info"
-                                        placeholder="Upload Image">
-                                    <span class="input-group-append">
-                                        <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                                    </span>
-                                </div>
-                                @error('img')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                                <br>
+                                <label>Email</label>
+                                <input type="email" name="email" class="form-control" value="{{ old('email', $Employee->email) }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="number" name="phone" class="form-control" value="{{ old('phone', $Employee->phone) }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" name="address" class="form-control" value="{{ old('address', $Employee->address) }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Upload Image</label>
+                                <input type="file" name="img" class="form-control">
+                                <img src="{{ asset('uploads/employees/'.$Employee->img) }}" width="100" class="mt-2">
 
                                 @if ($Employee->img != null)
-                                    Old Image : <img src="{{ url($Employee->img) }}" class="img-fluid rounded" width="80px"
-                                        height="50px" />
+                                Old Image : <img src="{{ url($Employee->img) }}" class="img-fluid rounded" width="80px"
+                                    height="50px" />
                                 @endif
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputName1">Email</label>
-                                <input type="email" class="form-control" id="exampleInputName1"
-                                    value="{{ $Employee->email }}" name="email" placeholder="Email">
-                                @error('email')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
+                                <label>Designation</label>
+                                <select id="designation" class="form-control" name="designation">
+                                    @foreach ($designation_Id as $designation)
+                                        <option value="{{ $designation->id }}" {{ $designation->id == $Employee->designation ? 'selected' : '' }}>{{ $designation->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputEmail3">Phone</label>
-                                <input type="phone" class="form-control" id="exampleInputEmail3"
-                                    value="{{ $Employee->phone }}" name="phone" placeholder="Phone">
-                                @error('phone')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
+                                <label>Department</label>
+                                <select class="form-control" name="department_id">
+                                    @foreach ($department_Id as $department)
+                                        <option value="{{ $department->id }}" {{ $department->id == $Employee->department_id ? 'selected' : '' }}>{{ $department->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputEmail3">Address</label>
-                                <input type="text" class="form-control" id="exampleInputEmail3"
-                                    value="{{ $Employee->address }}" name="address" placeholder="Address">
-                                @error('address')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
+                                <label>Basic Salary</label>
+                                <input type="text" id="basic_salary" class="form-control"
+                                    value="{{ old('basic_salary', $Employee->basic_salary) }}" readonly>
+                                <input type="hidden" id="hidden_basic_salary" name="basic_salary"
+                                    value="{{ old('basic_salary', $Employee->basic_salary) }}">
                             </div>
+    
 
                             {{-- <div class="form-group">
-                                <label for="exampleInputEmail3">Designation</label>
-                                <input type="text" class="form-control" id="exampleInputEmail3"
-                                    value="{{ $Employee->designation }}" name="designation" placeholder="Designation">
-                                @error('designation')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
+                                <label>Basic Salary</label>
+                                <input type="text" id="basic_salary" name="basic_salary" class="form-control" value="{{ old('basic_salary', $Employee->basic_salary) }}" readonly>
                             </div> --}}
-                            
+
                             <div class="form-group">
-                                <select name="designation_id" id="" class="js-example-basic-single" style="width:100%">
-                                    @foreach ($designation_Id as $designation_id)
-                                        {{-- <option value="0">Select SubServices</option> --}}
-                                        @if ($designation_id->id == $designation_id->name)
-                                            <option value="{{ $designation_id->id }}" selected>{{ $designation_id->name }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $designation_id->id }}">{{ $designation_id->name }}</option>
-                                        @endif
-                                    @endforeach
+                                <label>Joining Date</label>
+                                <input type="date" name="joining_date" class="form-control" value="{{ old('joining_date', $Employee->joining_date) }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select name="status" class="form-control">
+                                    <option value="1" {{ $Employee->status == 1 ? 'selected' : '' }}>Active</option>
+                                    <option value="2" {{ $Employee->status == 2 ? 'selected' : '' }}>Unactive</option>
+                                    <option value="3" {{ $Employee->status == 3 ? 'selected' : '' }}>Terminated</option>
                                 </select>
                             </div>
 
-                            <div class="form-group">
-                                <select name="department_id" id="" class="js-example-basic-single" style="width:100%">
-                                    @foreach ($department_Id as $department_id)
-                                        {{-- <option value="0">Select SubServices</option> --}}
-                                        @if ($department_id->id == $department_id->name)
-                                            <option value="{{ $department_id->id }}" selected>{{ $department_id->name }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $department_id->id }}">{{ $department_id->name }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleInputEmail3">Basic Salary</label>
-                                <input type="number" class="form-control" id="exampleInputEmail3"
-                                    value="{{ $Employee->basic_salary }}" name="basic_salary"
-                                    placeholder="Basic Salary" min="0">
-                                @error('basic_salary')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <select name="designation_id" id="" class="js-example-basic-single" style="width:100%">
-                                    @foreach ($designation_Id as $designation_id)
-                                        {{-- <option value="0">Select SubServices</option> --}}
-                                        @if ($designation_id->id == $designation_id->basic_salary)
-                                            <option value="{{ $designation_id->id }}" selected>{{ $designation_id->basic_salary }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $designation_id->id }}">{{ $designation_id->basic_salary }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleInputEmail3">Joining Date</label>
-                                <input type="date" class="form-control" id="exampleInputEmail3"
-                                    value="{{ $Employee->joining_date }}" name="joining_date"
-                                    placeholder="Joining Date">
-                                @error('joining_date')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            
-                            <div class="form-group">
-                            <label for="formFileLg" class="form-label">Status</label>
-                            <select name="status" id="" class="form-select mb-3" style="width:100%">
-                                {{-- @foreach ($Service as $sr) --}}
-                                @if ($Employee->status == 1)
-                                    <option value="1">---Active---</option>
-                                @elseif ($Employee->status == 2)
-                                    <option value="2">---Unactive---</option>
-                                @else
-                                    <option value="3">---Terminated---</option>
-                                @endif
-
-                                <option value="1">Active</option>
-                                <option value="2">Unactive</option>
-                                <option value="3">Terminated</option>
-
-
-                                {{-- @endforeach --}}
-                            </select>
-
-                            </div>
-                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">eidt</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a href="/Employees" class="btn btn-dark">Cancel</a>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- content-wrapper ends -->
-    @endsection
+    </div>
+
+        <!-- JavaScript to auto-update Basic Salary on Designation Change -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#designation').change(function () {
+            var designation_id = $(this).val();
+            if (designation_id) {
+                $.ajax({
+                    url: "/getBasicSalary/" + designation_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data) {
+                            $('#basic_salary').val(data.basic_salary);
+                            $('#hidden_basic_salary').val(data.basic_salary); // Update hidden field
+                        }
+                    },
+                    error: function () {
+                        alert('Error fetching salary data');
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+@endsection

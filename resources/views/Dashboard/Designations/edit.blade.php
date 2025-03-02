@@ -30,6 +30,15 @@
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputName1">Designation Name</label>
+                                  <input type="number" class="form-control" id="exampleInputName1" value="{{ $Designation->basic_salary }}"
+                                      name="basic_salary" placeholder="Basic Salary">
+                                  @error('basic_salary')
+                                      <p class="text-danger">{{ $message }}</p>
+                                  @enderror
+                              </div>
                                 
                                 <button type="submit" class="btn btn-primary py-3 w-100 mb-4">eidt</button>
                             </form>

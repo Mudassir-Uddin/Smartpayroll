@@ -52,9 +52,9 @@
 
     <div class="salary-slip" id="salarySlip">
         <div class="header">
-            <h2>Salary Slip</h2>
+            <h2 class="uppercase">Salary Slip</h2>
             {{-- <p>VGOTELL | Month: February 2025</p> --}}
-            <p>VGOTELL | {{ $payroll->month->name }} {{ $payroll->year }}</p>
+            <p class="uppercase"><strong>VGOTEL | {{ $payroll->month->name }} {{ $payroll->year }}</strong></p>
         </div>
 
         <table class="details-table">
@@ -117,26 +117,24 @@
                 <tr>
                     <td>Basic Salary</td>
                     <td>{{ number_format($payroll->basic_salary, 2) }}</td>
-                    {{-- <td>Tax {{ $payroll->deduction?->transactionType?->type }}</td> --}}
-                    <td>Voucher</td>
+                    <td>Tax {{ $payroll->deduction?->transactionType?->type }}</td>
                     <td>{{ number_format($payroll->deductions, 2) }}</td>
                 </tr>
                 <tr>
-                    {{-- <td>Bonus {{ $payroll->bonuses?->TransactionType?->type }}</td> --}}
-                    <td>Bonus</td>
-                    <td> {{ number_format($payroll->bonuses, 2) }}</td>
+                    <td>Current Salary</td>
+                    <td>{{ number_format($payroll->basic_salary/26 * $payroll->total_present, 2) }}</td>
                     {{-- <td>Provident Fund</td>
                     <td>1,500</td> --}}
                 </tr>
-                {{-- <tr>
-                    <td>Conveyance</td>
-                    <td>5,000</td>
-                    <td>Other Deductions</td>
-                    <td>1,000</td>
-                </tr> --}}
+                <tr>
+                    <td>Bonus</td>
+                    <td> {{ number_format($payroll->bonuses, 2) }}</td>
+                    {{-- <td>Other Deductions</td>
+                    <td>1,000</td> --}}
+                </tr>
                 <tr class="total">
                     <td>Total Earnings</td>
-                    <td>{{ number_format($payroll->basic_salary + $payroll->bonuses, 2) }}</td>
+                    <td>{{ number_format($payroll->basic_salary/26 * $payroll->total_present + $payroll->bonuses, 2) }}</td>
                     <td>Total Deductions</td>
                     <td>{{ number_format($payroll->deductions, 2) }}</td>
                 </tr>

@@ -59,6 +59,7 @@
                                         <th>Month</th>
                                         <th>Year</th>
                                         <th>Basic Salary</th>
+                                        <th>Current Salary</th>
                                         <th>Present</th>
                                         <th>Absent</th>
                                         <th>Late</th>
@@ -78,6 +79,7 @@
                                             <td>{{ $payroll->month->name }}</td>
                                             <td>{{ $payroll->year }}</td>
                                             <td>{{ number_format($payroll->basic_salary, 2) }}</td>
+                                            <td>{{ number_format($payroll->basic_salary/26 * $payroll->total_present , 2) }}</td>
                                             <td>{{ $payroll->total_present }}</td>
                                             <td>{{ $payroll->total_absent }}</td>
                                             <td>{{ $payroll->total_late }}</td>

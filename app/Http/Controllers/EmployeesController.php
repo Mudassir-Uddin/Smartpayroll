@@ -36,7 +36,6 @@ class EmployeesController extends Controller
             'address'=>'required',
             'designation'=>'required',
             'department_id'=>'required',
-            'basic_salary'=>'required',
             'joining_date'=>'required',
             'status'=>'required',
         ]);
@@ -54,7 +53,6 @@ class EmployeesController extends Controller
         $Employee->address = $req->address;
         $Employee->designation = $req->designation;
         $Employee->department_id = $req->department_id;
-        $Employee->basic_salary = $req->basic_salary;
         $Employee->joining_date = $req->joining_date;
         $Employee->status = $req->status;
         $Employee->save();
@@ -62,37 +60,39 @@ class EmployeesController extends Controller
 
     }
     public function Edit($id){
+        $Employee = Employee::Where('id', $id/548548)->first();
         $department_Id = Department::all();
         $designation_Id = Designation::all();
-        $Employee = Employee::Where('id', $id/548548)->first();
+
+        // dd($Employee->basic_salary); 
         return view('Dashboard.Employees.edit', compact('Employee','department_Id','designation_Id'));
     }
-    public function Update(Request $req,$id){
+    public function Update(Request $req, $id) {
         $req->validate([
             'employee_id'=>'required|max:10',
             'name'=>'required',
+            'email' => 'required',
             'phone'=>'required|min:11|max:11',
             'address'=>'required',
-            'designation'=>'required',
             'department_id'=>'required',
             'joining_date'=>'required',
             'status'=>'required',
         ]);
+    
         $Employee = Employee::find($id);
         $imgname = $Employee->img;
+    
         if ($req->hasfile('img')) {
-
             $img = $req->img;
-            $imgname = $img->getClientOriginalName();
-            $imgname = time() . "__" . $imgname;
+            $imgname = time() . "__" . $img->getClientOriginalName();
             $img->move("images/Employeesimages/", $imgname);
             $imgname = "/images/Employeesimages/" . $imgname;
-            if ($Employee->img) {
-                if (file_exists(public_path($Employee->img))) {
-                    unlink(public_path($Employee->img));
-                }
+    
+            if ($Employee->img && file_exists(public_path($Employee->img))) {
+                unlink(public_path($Employee->img));
             }
         }
+    
         $Employee->employee_id = $req->employee_id;
         $Employee->name = $req->name;
         $Employee->img = $imgname;
@@ -101,12 +101,13 @@ class EmployeesController extends Controller
         $Employee->address = $req->address;
         $Employee->designation = $req->designation;
         $Employee->department_id = $req->department_id;
-        $Employee->basic_salary = $req->basic_salary;
         $Employee->joining_date = $req->joining_date;
         $Employee->status = $req->status;
+    
         $Employee->save();
         return redirect('/Employees');
     }
+    
     public function Delete($id){
         $Employee = Employee::find($id);
         if ($Employee) {
