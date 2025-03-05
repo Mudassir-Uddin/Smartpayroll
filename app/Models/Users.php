@@ -34,7 +34,7 @@ class Users extends Model
     {
         $validator = Validator::make(
             ['email' => $user->email],
-            ['email' => 'required|email|unique:employees,email,' . $user->id]
+            ['email' => 'required|email|unique:user,email,' . $user->id]
         );
 
         if ($validator->fails()) {

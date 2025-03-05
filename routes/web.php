@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendancesController;
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BonusesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeductionsController;
@@ -24,7 +25,7 @@ Route::get('/Admindashboard', [DashboardController::class, 'Admindashboard'])->n
 
 // DB User
 
-Route::get('/DbUsers', [UsersController::class, 'Users'])->name('DbUser');
+Route::get('/DbUsers', [UsersController::class, 'Users'])->name('DbUser')->middleware('Admin');
 Route::get('/UsersInsert', [UsersController::class, 'insert'])->name('UserInsert');
 Route::post('/UsersStore', [UsersController::class, 'Store']);
 Route::get('/Usersedit/{id}', [UsersController::class, 'edit']);
@@ -105,3 +106,14 @@ Route::post('/Payrollsupdate/{id}', [PayrollController::class, 'update']);
 Route::get('/Payrollsdelete/{id}', [PayrollController::class, 'delete']);
 
 Route::get('/payrolls/salary-slip/{id}', [PayrollController::class, 'generateSalarySlip']);
+
+
+//____________ Authentication _____________________
+#region Auth
+Route::get('/register', [AuthenticationController::class,'register']);
+Route::post('/registerstore', [AuthenticationController::class,'registerstore']);
+Route::get('/login', [AuthenticationController::class,'login']);
+Route::post('/loginstore', [AuthenticationController::class,'loginstore']);
+Route::get('/logout', [AuthenticationController::class,'logout']);
+Route::get('/update', [AuthenticationController::class,'update']);
+#endregion

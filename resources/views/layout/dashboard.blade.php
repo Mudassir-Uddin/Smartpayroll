@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{url('/Dashboard/assets/vendors/css/vendor.bundle.base.css')}}">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{{url('/Dashboard/')}}">
+    <link rel="stylesheet" href="{{url('/Dashboard/assets/vendors/jvectormap/jquery-jvectormap.css')}}">
     <link rel="stylesheet" href="{{url('/Dashboard/assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{url('/Dashboard/assets/vendors/owl-carousel-2/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{url('/Dashboard/assets/vendors/owl-carousel-2/owl.theme.default.min.css')}}">
@@ -30,6 +30,17 @@
     
   </head>
   <body>
+
+  @php
+    use Illuminate\Support\Facades\Session;
+    use App\Models\Users;
+    $user = Users::where('id', Session::get('id'))->first();
+    $userRole = '';
+    if (Session::has('role')) {
+      $userRole = Session::get('role');
+    }
+  @endphp
+
     <div class="container-scroller">
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -45,10 +56,17 @@
                   <img class="img-xs rounded-circle " src="{{url('/Dashboard/assets/images/faces/face15.jpg')}}" alt="">
                   <span class="count bg-success"></span>
                 </div>
+                @if (session()->has('email'))
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-                  <span>Gold Member</span>
+                  <h5 class="mb-0 font-weight-normal">{{session()->get('name')}}</h5>
+                    <span>{{ $user->role==2? "user": "Admin" }}</span>
                 </div>
+                @else
+                <div class="profile-name">
+                  <h5 class="mb-0 font-weight-normal">VGOTELL</h5>
+                  <span>ADMIN</span>
+                </div>
+                @endif
               </div>
               <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
               <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
@@ -98,6 +116,8 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+          @if (session()->has('email'))
+          @if ($user->role == 1)
           <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
@@ -113,6 +133,7 @@
               </ul>
             </div>
           </li>
+          @endif
           
           <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#department" aria-expanded="false" aria-controls="department">
@@ -179,6 +200,7 @@
             </div>
           </li>
           
+          @if ($user->role == 1)
           <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
@@ -194,6 +216,7 @@
               </ul>
             </div>
           </li>
+          @endif
           
           <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#Deductions" aria-expanded="false" aria-controls="Deductions">
@@ -275,7 +298,7 @@
             </div>
           </li>
 
-          <li class="nav-item menu-items">
+          {{-- <li class="nav-item menu-items">
             <a class="nav-link" href="pages/forms/basic_elements.html">
               <span class="menu-icon">
                 <i class="mdi mdi-playlist-play"></i>
@@ -314,7 +337,8 @@
               </span>
               <span class="menu-title">Documentation</span>
             </a>
-          </li>
+          </li> --}}
+          @endif
         </ul>
       </nav>
   <!-- partial -->
@@ -471,14 +495,33 @@
                   <p class="p-3 mb-0 text-center">See all notifications</p>
                 </div>
               </li>
+              
+              @php
+                                
+              use Illuminate\Http\Request;
+              use Illuminate\Support\Facades\DB;
+              use Illuminate\Support\Facades\Hash;
+              $user = Users::where('id', Session::get('id'))->first();
+          @endphp
+
+          @if (session()->has('email'))
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="{{url('/Dashboard/assets/images/faces/face15.jpg')}}" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                    {{-- <img class="img-xs rounded-circle" src="{{url('/Dashboard/assets/images/faces/face15.jpg')}}" alt=""> --}}
+                    @if ($user)
+                      <img class="img-xs rounded-circle" src="{{ $user->img }}" alt=""
+                        style="width: 40px; height: 40px;">
+                    @endif
+                    
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ session()->get('name') }}</p>
+                    
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>
+                @else
+                <a href="{{ url('/login') }}" class="btn btn-success my-2">Login</a>
+                @endif
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                   <h6 class="p-3 mb-0">Profile</h6>
                   <div class="dropdown-divider"></div>
@@ -499,8 +542,12 @@
                         <i class="mdi mdi-logout text-danger"></i>
                       </div>
                     </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Log out</p>
+                    <div class="preview-item-content" style="cursor: pointer;" onclick="window.location.href='{{ url('/logout') }}'">
+                      @if (session()->has('email'))
+                      <p class="preview-subject mb-1" style="cursor: pointer;" onclick="window.location.href='{{ url('/logout') }}'">Log out</p>
+                      {{-- <p class="preview-subject mb-1">Settings</p> --}}
+
+                      @endif
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
