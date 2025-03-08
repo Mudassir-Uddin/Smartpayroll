@@ -10,7 +10,6 @@ class UsersController extends Controller
 {
     //
     function Users(){
-        
         $Users = Users::all();
         return view('Dashboard.Users.index',compact('Users'));
     }
