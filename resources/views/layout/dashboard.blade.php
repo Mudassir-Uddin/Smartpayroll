@@ -76,9 +76,14 @@
                       <i class="mdi mdi-settings text-primary"></i>
                     </div>
                   </div>
-                  <div class="preview-item-content">
+                  
+                  @if (session()->has('email'))
+                  @if ($user)
+                  <div class="preview-item-content" style="cursor: pointer;" onclick="window.location.href='{{ url('/Profileedit') }}/{{ $user->id * 548548 }}'">
                     <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
                   </div>
+                    @endif
+                @endif
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item preview-item">
@@ -531,9 +536,16 @@
                         <i class="mdi mdi-settings text-success"></i>
                       </div>
                     </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Settings</p>
-                    </div>
+
+                  
+                  @if (session()->has('email'))
+                  @if ($user)
+                  <div class="preview-item-content" style="cursor: pointer;" onclick="window.location.href='{{ url('/Profileedit') }}/{{ $user->id * 548548 }}'">
+                    <p class="preview-subject mb-1">My Profile</p>
+                  </div>
+                    @endif
+                @endif
+
                   </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item preview-item">
@@ -607,6 +619,8 @@
 
 <!-- DataTables JS -->
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
   
